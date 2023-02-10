@@ -11,7 +11,7 @@ Declares the titles for each segment in an array.
 private let buttonTitles: [String] = ["Button 1", "Button 2", "Button 3"]
 ```
 
-Then create an instance of the custom segmented control passing it the above array as argument:
+Then create an instance of the custom segmented control passing it the array as argument:
 
 ```swift
 private lazy var segmentedControl: CustomSegmetedControl = CustomSegmetedControl(buttonTitles: buttonTitles)
@@ -22,9 +22,13 @@ Finally, conforms to the delegate protocol to know which button was pressed.
 ```swift
 extension ViewController: CustomSegmetedControlDelegate {
     func buttonPressed(buttonTitlesIndex: Int, title: String?) {
-				// some action
+	// some action
     }
 }
 ```
 
 ## Video
+
+
+https://user-images.githubusercontent.com/71818002/218160590-67edcb86-1646-41f7-92a6-9f231f8f766f.mp4
+
