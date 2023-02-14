@@ -25,10 +25,16 @@ final class CustomSegmetedControl: UIView {
     private var fontSelected: UIFont = UIFont()
     private var fontUnselected: UIFont = UIFont()
     
+    /// Creates the custom segmented control with segments having the given titles.
+    /// - Parameters:
+    ///   - buttonTitles: The titles of the segmented control will have.
+    ///   - tintColor: The color of the bar and segments.
+    ///   - fontSelected: The font of the selected segmented.
+    ///   - fontUnselected: The font of the unselected segmented.
     convenience init(buttonTitles: [String], tintColor: UIColor = .systemPurple, fontSelected: UIFont = .preferredFont(forTextStyle: .body, compatibleWith: .init(legibilityWeight: .bold)), fontUnselected: UIFont = .preferredFont(forTextStyle: .body)) {
         self.init()
         // Ensures buttonTitles has at least one element to avoid runtime crash
-        guard !buttonTitles.isEmpty else { return }
+        guard buttonTitles.isEmpty == false else { return }
         self.buttonTitles = buttonTitles
         self.fontSelected = fontSelected
         self.fontUnselected = fontUnselected
