@@ -22,12 +22,16 @@ final class CustomSegmetedControl: UIView {
     private var selectedButtonIndex: Int = 0
     
     private var elementsTintColor: UIColor = UIColor()
+    private var fontSelected: UIFont = UIFont()
+    private var fontUnselected: UIFont = UIFont()
     
-    convenience init(buttonTitles: [String], tintColor: UIColor = .systemPurple) {
+    convenience init(buttonTitles: [String], tintColor: UIColor = .systemPurple, fontSelected: UIFont = .preferredFont(forTextStyle: .body, compatibleWith: .init(legibilityWeight: .bold)), fontUnselected: UIFont = .preferredFont(forTextStyle: .body)) {
         self.init()
         // Ensures buttonTitles has at least one element to avoid runtime crash
         guard !buttonTitles.isEmpty else { return }
         self.buttonTitles = buttonTitles
+        self.fontSelected = fontSelected
+        self.fontUnselected = fontUnselected
         self.tintColor = tintColor
         configure()
     }
@@ -67,12 +71,12 @@ final class CustomSegmetedControl: UIView {
             let button: UIButton = UIButton(type: .system)
             button.setTitle(title, for: .normal)
             button.tintColor = .black
-            button.titleLabel?.font = .systemFont(ofSize: 14)
+            button.titleLabel?.font = fontUnselected
             button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
             return button
         }
         buttons[0].setTitleColor(tintColor, for: .normal)
-        buttons[0].titleLabel?.font = .boldSystemFont(ofSize: 14)
+        buttons[0].titleLabel?.font = fontSelected
     }
     
     // Add the buttons in a horizontal container
@@ -121,10 +125,10 @@ final class CustomSegmetedControl: UIView {
         buttons.forEach { button in
             if button == selectedButton {
                 button.setTitleColor(tintColor, for: .normal)
-                button.titleLabel?.font = .boldSystemFont(ofSize: 14)
+                button.titleLabel?.font = fontSelected
             } else {
                 button.setTitleColor(.black, for: .normal)
-                button.titleLabel?.font = .systemFont(ofSize: 14)
+                button.titleLabel?.font = fontUnselected
             }
         }
     }
